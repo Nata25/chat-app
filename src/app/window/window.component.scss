@@ -1,0 +1,90 @@
+$white: #fff;
+$dark-blue: #1e4164;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window {
+  position: relative;
+  color: $white;
+}
+
+.statusbar {
+  @include flex-center;
+  height: 30px;
+  background-color: #098eff;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.username {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.messages {
+  margin: 0;
+  padding: 10px;
+  background-color: #999;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.message {
+  background-color: $dark-blue;
+  border-radius: 4px;
+  list-style-type: none;
+  padding: 5px;
+  margin-bottom: 3px;
+
+  &.active {
+    background-color: #057bdf;
+  }
+
+  .user {
+    margin: 0;
+    font-weight: normal;
+    font-size: 14px;
+  }
+
+  .text {
+    color: $white;
+  }
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid $dark-blue;
+  font-weight: bold;
+  font-size: 20px;
+  color: $dark-blue;
+  background-color: $white;
+  cursor: pointer;
+
+  @include flex-center;
+}
+
+.input {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+
+  button {
+    white-space: nowrap;
+  }
+}

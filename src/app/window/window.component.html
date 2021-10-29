@@ -1,0 +1,20 @@
+<div class="window">
+  <div class="statusbar">
+    {{ status }}
+  </div>
+  <h1 class="username">
+    {{ username }}
+  </h1>
+  <span class="delete-button">x</span>
+  <ul class="messages">
+    <li *ngFor="let msg of messages" class="message">
+      <h2 class="user">User: {{ msg.userId }}</h2>
+      <p class="text">{{ msg.message }}</p>
+    </li>
+  </ul>
+
+  <div class="input">
+    <input placeholder="write some" />
+    <button class="green">Send message</button>
+  </div>
+</div>
