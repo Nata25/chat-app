@@ -9,7 +9,6 @@ import { User } from 'src/types';
 export class UsersService {
   constructor() {}
 
-  // users$: Observable<User[]> = from([]);
   users: User[] = [];
 
   private genId(users: User[]): number {

@@ -6,7 +6,7 @@
     {{ user?.name }}
   </h1>
   <button (click)="removeUser()" class="delete-button">x</button>
-  <ul class="messages">
+  <ul *ngIf="messages" class="messages">
     <li *ngFor="let msg of messages" class="message">
       <h2 class="user">User: {{ msg.userId }}</h2>
       <p class="text">{{ msg.message }}</p>
@@ -14,7 +14,9 @@
   </ul>
 
   <div class="input">
-    <input placeholder="write some" />
-    <button class="green">Send message</button>
+    <form (ngSubmit)="addMessage()">
+      <input [(ngModel)]="message" name="message" placeholder="write some" />
+      <button class="green">Send message</button>
+    </form>
   </div>
 </div>
