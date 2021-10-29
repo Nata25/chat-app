@@ -7,8 +7,14 @@
   </h1>
   <button (click)="removeUser()" class="delete-button">x</button>
   <ul *ngIf="messages" class="messages">
-    <li *ngFor="let msg of messages" class="message">
-      <h2 class="user">{{ msg.userName }}</h2>
+    <li
+      *ngFor="let msg of messages"
+      class="message"
+      [ngClass]="{
+        active: msg.userId === user.id
+      }"
+    >
+      <h2 class="user">{{ msg.userId === user.id ? 'Me' : msg.userName }}:</h2>
       <p class="text">{{ msg.message }}</p>
     </li>
   </ul>

@@ -45,9 +45,11 @@ $dark-blue: #1e4164;
   list-style-type: none;
   padding: 5px;
   margin-bottom: 3px;
+  width: 70%;
 
   &.active {
     background-color: #057bdf;
+    transform: translateX(30%);
   }
 
   .user {
