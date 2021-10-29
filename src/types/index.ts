@@ -1,6 +1,7 @@
 export interface Message {
   userId: number;
   message: string;
+  isInit: boolean;
   userName?: string;
 }
 

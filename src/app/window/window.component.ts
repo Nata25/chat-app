@@ -28,7 +28,8 @@ export class WindowComponent implements OnInit, OnDestroy {
 
   messagesSub: Subscription = this._messagesService.message$.subscribe((msg: Message) => {
     const fullUser = this._userService.users.find((user) => user.id === msg.userId);
-    if (fullUser) {
+    const isMyInitMessage = msg.isInit && msg.userId === this.user.id;
+    if (fullUser && !isMyInitMessage) {
       this.messages.push({
         ...msg,
         userName: fullUser.name,
@@ -37,22 +38,23 @@ export class WindowComponent implements OnInit, OnDestroy {
   });
 
   removeUser(): void {
-    this._userService.removeUser(this.user.id);
     this._messagesService.push(
       this.genMessage(`User ${this.user.name} left conversation.`)
     );
+    this._userService.removeUser(this.user.id);
   }
 
-  genMessage(message: string): Message {
+  genMessage(message: string, isInit = false): Message {
     return {
       userId: this.user.id,
       message,
+      isInit,
     };
   }
 
   initUser(): void {
     this._messagesService.push(
-      this.genMessage(`User ${this.user.name} joined the conversation.`)
+      this.genMessage(`User ${this.user.name} joined the conversation.`, true)
     );
   }
 
