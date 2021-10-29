@@ -27,7 +27,13 @@ export class WindowComponent implements OnInit, OnDestroy {
   message?: string;
 
   messagesSub: Subscription = this._messagesService.message$.subscribe((msg: Message) => {
-    this.messages.push(msg);
+    const fullUser = this._userService.users.find((user) => user.id === msg.userId);
+    if (fullUser) {
+      this.messages.push({
+        ...msg,
+        userName: fullUser.name,
+      });
+    }
   });
 
   removeUser(): void {
