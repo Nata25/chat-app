@@ -5,14 +5,9 @@ import { AppComponent } from './app.component';
 import { AddUserInputComponent } from './add-user-input/add-user-input.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddUserInputComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, AddUserInputComponent],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
