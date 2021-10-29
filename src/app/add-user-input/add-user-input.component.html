@@ -1,4 +1,6 @@
 <div class="add-user">
-  <button (click)="onAddUser()" class="red">Add new user</button>
-  <input />
+  <form novalidate="onAddUser()">
+    <button (click)="onAddUser()" class="red">Add new user</button>
+    <input name="input" [(ngModel)]="input" />
+  </form>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Message } from 'src/types';
+import { Component, Input, OnInit } from '@angular/core';
+import { Message, User } from 'src/types';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-window',
@@ -7,12 +8,14 @@ import { Message } from 'src/types';
   styleUrls: ['./window.component.scss'],
 })
 export class WindowComponent implements OnInit {
-  constructor() {}
+  constructor(private _userService: UsersService) {}
 
   ngOnInit(): void {}
 
-  username: string = 'Tomas';
   status: string = 'online';
+
+  @Input() user?: User;
+
   messages: Message[] = [
     {
       userId: 1,
@@ -23,4 +26,8 @@ export class WindowComponent implements OnInit {
       message: 'Hi guys',
     },
   ];
+
+  removeUser(): void {
+    if (this.user) this._userService.removeUser(this.user.id);
+  }
 }

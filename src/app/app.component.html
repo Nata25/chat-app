@@ -3,9 +3,6 @@
 <div class="container">
   <app-add-user-input></app-add-user-input>
   <div class="windows-wrapper">
-    <app-window></app-window>
-    <app-window></app-window>
-    <app-window></app-window>
-    <app-window></app-window>
+    <app-window *ngFor="let user of _usersService.users" [user]="user"></app-window>
   </div>
 </div>

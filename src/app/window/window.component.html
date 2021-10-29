@@ -3,9 +3,9 @@
     {{ status }}
   </div>
   <h1 class="username">
-    {{ username }}
+    {{ user?.name }}
   </h1>
-  <span class="delete-button">x</span>
+  <button (click)="removeUser()" class="delete-button">x</button>
   <ul class="messages">
     <li *ngFor="let msg of messages" class="message">
       <h2 class="user">User: {{ msg.userId }}</h2>
