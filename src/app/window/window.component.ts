@@ -45,11 +45,12 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   genMessage(message: string, isInit = false): Message {
-    return {
+    let msg: Message = {
       userId: this.user.id,
       message,
-      isInit,
     };
+    if (isInit) msg.isInit = true;
+    return msg;
   }
 
   initUser(): void {

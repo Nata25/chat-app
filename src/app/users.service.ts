@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { from } from 'rxjs';
 import { User } from 'src/types';
 
 @Injectable({
@@ -10,15 +8,12 @@ export class UsersService {
   constructor() {}
 
   users: User[] = [];
-
-  private genId(users: User[]): number {
-    return users.length > 0 ? Math.max(...users.map((user) => user.id)) + 1 : 0;
-  }
+  lastUserId: number = 0;
 
   addUser(name: string): void {
     this.users.push({
       name,
-      id: this.genId(this.users),
+      id: this.lastUserId++,
     });
   }
 
